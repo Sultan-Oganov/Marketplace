@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { persistor } from '..';
 import { IUserSlice } from '../types/user';
 
 const initialState: IUserSlice = {

@@ -1,18 +1,19 @@
-import { ChangeEvent, FC, useState, ReactNode } from 'react';
-import google from '../../assets/icons/google.png';
+import { ChangeEvent, FC, useState, ReactNode, useMemo } from 'react';
+import { Loader } from '../Loader';
 
 interface IForm {
   handleSubmit: (email: string, password: string) => void;
   btnTitle: string;
   children?: ReactNode;
-  googleAuth?: () => void;
+  isLoading?: boolean;
 }
 
-export const Form: FC<IForm> = ({ handleSubmit, btnTitle, googleAuth, children }) => {
+export const Form: FC<IForm> = ({ handleSubmit, btnTitle, children, isLoading = false }) => {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
+  const disabledColor = useMemo(() => (isLoading ? 'bg-slate-300' : 'bg-gray-200'), [isLoading]);
 
   const handleChange = (prop: 'email' | 'password') => (event: ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [prop]: event.target.value });
@@ -26,27 +27,39 @@ export const Form: FC<IForm> = ({ handleSubmit, btnTitle, googleAuth, children }
         handleSubmit(userData.email, userData.password);
       }}>
       <input
-        className="outline-0 h-12 w-11/12 py-4 px-3.5 rounded-xl"
+        disabled={isLoading}
+        className={`${disabledColor} outline-0 h-12 w-11/12 py-4 px-3.5 rounded-xl`}
         type="email"
         value={userData.email}
         onChange={handleChange('email')}
         placeholder="Email"
       />
       <input
-        className="outline-0 h-12 w-11/12 py-4 px-3.5 rounded-xl"
+        disabled={isLoading}
+        className={`${disabledColor} outline-0 h-12 w-11/12 py-4 px-3.5 rounded-xl`}
         type="password"
         value={userData.password}
         onChange={handleChange('password')}
         placeholder="Password"
       />
       <button
-        className="bg-slate-300 h-12 w-11/12 font-medium mt-6 bg-white rounded-xl"
+        disabled={isLoading}
+        className={`${disabledColor} h-12 w-11/12 font-medium mt-6 rounded-xl relative`}
         type="submit">
         {btnTitle}
+        {isLoading && (
+          <Loader
+            size={'20'}
+            style={{
+              position: 'absolute',
+              right: '25%',
+              top: '50%',
+              transform: 'translateY(-50%)',
+            }}
+          />
+        )}
       </button>
-      <button className="bg-white w-14 h-12 rounded-full cursor-pointer" onClick={googleAuth}>
-        <img src={google} alt="" className="w-full h-full" />
-      </button>
+
       {children}
     </form>
   );

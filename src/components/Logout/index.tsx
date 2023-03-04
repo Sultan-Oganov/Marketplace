@@ -1,15 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../firebase';
 import { useAppDispatch } from '../../modules/hooks/redux';
 import { removeUser } from '../../modules/redux/slices/userSlice';
-import storage from 'redux-persist/lib/storage';
+import { logout } from '../../modules/services/auth';
 
 export const Logout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    storage.removeItem('persist:root');
     dispatch(removeUser());
     logout();
     navigate('/home');

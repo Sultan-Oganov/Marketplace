@@ -14,17 +14,19 @@ import userSlice from './slices/userSlice';
 import basketSlice from './slices/basketSlice';
 import { productsAPI } from './api/productsAPI';
 import snackbarSlice from './slices/snackbarSlice';
+import productsSlice from './slices/productsSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,
   basket: basketSlice,
   snackbar: snackbarSlice,
+  products: productsSlice,
   [productsAPI.reducerPath]: productsAPI.reducer,
 });
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [productsAPI.reducerPath, 'snackbar'],
+  blacklist: [productsAPI.reducerPath, 'snackbar', 'products'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

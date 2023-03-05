@@ -1,9 +1,11 @@
+import { useAppSelector } from '../../modules/hooks/redux';
 import { useGetProductsQuery } from '../../modules/redux/api/productsAPI';
 import { Loader } from '../Loader/index';
 import { ProductItem } from '../ProductItem/index';
 
 export const ProductsList = () => {
-  const { data, isLoading } = useGetProductsQuery(null);
+  const { isLoading } = useGetProductsQuery(null);
+  const { products } = useAppSelector((state) => state.products);
 
   if (isLoading) {
     return (
@@ -14,8 +16,8 @@ export const ProductsList = () => {
   }
 
   return (
-    <div className="flex flex-wrap gap-20">
-      {data?.map((product) => (
+    <div className="flex flex-wrap gap-10">
+      {products?.map((product) => (
         <ProductItem key={product.id} {...{ product }} />
       ))}
     </div>

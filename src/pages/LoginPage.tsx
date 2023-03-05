@@ -5,14 +5,19 @@ import { useAppDispatch, useAppSelector } from '../modules/hooks/redux';
 import { setUser, toggleIsLoading } from '../modules/redux/slices/userSlice';
 import { authWithGoogle, login } from '../modules/services/auth';
 import google from '../assets/icons/google.png';
+import { Snackbar } from '../components/Snackbar';
+import { useState } from 'react';
+import { openSnackbar } from '../modules/redux/slices/snackbarSlice';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState('');
   const { isLoading } = useAppSelector((state) => state.user);
-  const dispath = useAppDispatch();
+  const { isOpen } = useAppSelector((state) => state.snackbar);
+  const dispatch = useAppDispatch();
 
   const handleSetUser = (data: UserCredential) => {
-    dispath(
+    dispatch(
       setUser({
         email: data.user.email,
         //@ts-ignore
@@ -24,27 +29,29 @@ export const LoginPage = () => {
   };
 
   const handleSubmit = (email: string, password: string) => {
-    dispath(toggleIsLoading(true));
+    dispatch(toggleIsLoading(true));
     login(email, password)
       .then((response) => {
         handleSetUser(response);
       })
       .catch((error) => {
-        alert(`Error: ${error.message}`);
+        setError(`Error: ${error.message}`);
+        dispatch(openSnackbar());
       })
-      .finally(() => dispath(toggleIsLoading(false)));
+      .finally(() => dispatch(toggleIsLoading(false)));
   };
 
   const handleGoogleLogin = () => {
-    dispath(toggleIsLoading(true));
+    dispatch(toggleIsLoading(true));
     authWithGoogle()
       .then((response) => {
         handleSetUser(response);
       })
       .catch((error) => {
-        alert(`Error: ${error.message}`);
+        setError(`Error: ${error.message}`);
+        dispatch(openSnackbar());
       })
-      .finally(() => dispath(toggleIsLoading(false)));
+      .finally(() => dispatch(toggleIsLoading(false)));
   };
 
   return (
@@ -62,6 +69,15 @@ export const LoginPage = () => {
           <p className="text-white absolute right-5 bottom-5">Регистрация</p>
         </NavLink>
       </Form>
+      {isOpen && (
+        <Snackbar
+          {...{
+            isOpen,
+            color: 'bg-red-600',
+            message: error,
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -1,32 +1,25 @@
 {
     "products": [
         {
-            "id": 1,
-            "name": "HP",
-            "image": "https://static.vecteezy.com/system/resources/previews/008/475/692/original/modern-laptop-isolated-on-white-background-3d-illustration-free-png.png",
-            "price": "1000",
-            "rated": "7"
-        },
-        {
-            "id": 2,
-            "name": "Lenovo",
-            "image": "https://static.vecteezy.com/system/resources/thumbnails/008/532/915/small/laptop-computer-cutout-file-png.png",
-            "price": "700",
-            "rated": "5"
-        },
-        {
-            "id": 3,
-            "name": "Samsung",
-            "image": "https://static.vecteezy.com/system/resources/thumbnails/009/384/093/small/laptop-device-clipart-design-illustration-free-png.png",
-            "price": "650",
-            "rated": "9"
-        },
-        {
             "id": 4,
             "name": "MackBook",
             "image": "https://www.freeiconspng.com/thumbs/laptop-png/mac-laptop-png-13.png",
             "price": "2400",
             "rated": "1"
+        },
+        {
+            "id": 10,
+            "name": "Toshiba",
+            "image": "https://www.pngmart.com/files/4/Toshiba-Laptop-PNG-Transparent.png",
+            "price": "1500",
+            "rated": "10"
+        },
+        {
+            "id": 1,
+            "name": "HP",
+            "image": "https://static.vecteezy.com/system/resources/previews/008/475/692/original/modern-laptop-isolated-on-white-background-3d-illustration-free-png.png",
+            "price": "1000",
+            "rated": "7"
         },
         {
             "id": 5,
@@ -36,25 +29,25 @@
             "rated": "2"
         },
         {
-            "id": 6,
-            "name": "Asus",
-            "image": "https://freepngimg.com/save/33587-asus-laptop-photo/1251x979",
-            "price": "700",
-            "rated": "4"
-        },
-        {
-            "id": 7,
-            "name": "Aser",
-            "image": "https://static.vecteezy.com/system/resources/previews/009/342/712/non_2x/laptop-device-clipart-design-illustration-free-png.png",
-            "price": "400",
-            "rated": "8"
-        },
-        {
             "id": 8,
             "name": "Huawei",
             "image": "https://promotions.newegg.com/huawei/18-1477/images/imgs/image1.png",
             "price": "800",
             "rated": "3"
+        },
+        {
+            "id": 2,
+            "name": "Lenovo",
+            "image": "https://static.vecteezy.com/system/resources/thumbnails/008/532/915/small/laptop-computer-cutout-file-png.png",
+            "price": "700",
+            "rated": "5"
+        },
+        {
+            "id": 6,
+            "name": "Asus",
+            "image": "https://freepngimg.com/save/33587-asus-laptop-photo/1251x979",
+            "price": "700",
+            "rated": "4"
         },
         {
             "id": 9,
@@ -64,11 +57,18 @@
             "rated": "6"
         },
         {
-            "id": 10,
-            "name": "Toshiba",
-            "image": "https://www.pngmart.com/files/4/Toshiba-Laptop-PNG-Transparent.png",
-            "price": "1500",
-            "rated": "10"
+            "id": 3,
+            "name": "Samsung",
+            "image": "https://static.vecteezy.com/system/resources/thumbnails/009/384/093/small/laptop-device-clipart-design-illustration-free-png.png",
+            "price": "650",
+            "rated": "9"
+        },
+        {
+            "id": 7,
+            "name": "Aser",
+            "image": "https://static.vecteezy.com/system/resources/previews/009/342/712/non_2x/laptop-device-clipart-design-illustration-free-png.png",
+            "price": "400",
+            "rated": "8"
         }
     ]
 }

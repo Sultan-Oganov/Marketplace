@@ -9,7 +9,7 @@ export interface IProductBasket extends IProduct {
 const initialState: IProductBasket[] = [];
 
 const basketSlice = createSlice({
-  name: 'user',
+  name: 'basket',
   initialState,
   reducers: {
     addProduct: (state, action: PayloadAction<IProduct>) => {

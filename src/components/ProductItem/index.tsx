@@ -33,10 +33,6 @@ export const ProductItem: FC<IProductItem> = ({ product }) => {
     dispatch(removeProduct(product));
   };
 
-  // return alert(
-  //   'Чтобы добавить товар в корзину, Вам нужно (авторизоваться - ссылка на страницу авторизации/регистрации);',
-  // );
-
   return (
     <div className="p-5 bg-slate-300 rounded-lg flex flex-col gap-5 hover:bg-slate-400">
       <div className="w-52 h-32">

@@ -11,13 +11,20 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userSlice from './slices/userSlice';
+import basketSlice from './slices/basketSlice';
+import { productsAPI } from './api/productsAPI';
+import snackbarSlice from './slices/snackbarSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,
+  basket: basketSlice,
+  snackbar: snackbarSlice,
+  [productsAPI.reducerPath]: productsAPI.reducer,
 });
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: [productsAPI.reducerPath, 'snackbar'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -29,7 +36,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(),
+    }).concat(productsAPI.middleware),
 });
 
 export const persistor = persistStore(store);

@@ -1,10 +1,10 @@
 import { Form } from '../components/Form';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { UserCredential } from 'firebase/auth';
 import { useAppDispatch, useAppSelector } from '../modules/hooks/redux';
 import { setUser, toggleIsLoading } from '../modules/redux/slices/userSlice';
 import { authWithGoogle, login } from '../modules/services/auth';
 import google from '../assets/icons/google.png';
-import { UserCredential } from 'firebase/auth';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ export const LoginPage = () => {
 
   return (
     <div className="h-screen grid place-items-center">
-      <Form {...{ handleSubmit, isLoading }} btnTitle="Sign in">
+      <Form {...{ handleSubmit, isLoading }} btnTitle="Войти">
         <button
           onClick={handleGoogleLogin}
           disabled={isLoading}
@@ -59,7 +59,7 @@ export const LoginPage = () => {
           <img src={google} alt="" className="w-full h-full" />
         </button>
         <NavLink to="/registration">
-          <p className="text-white absolute right-5 bottom-5">Registration</p>
+          <p className="text-white absolute right-5 bottom-5">Регистрация</p>
         </NavLink>
       </Form>
     </div>

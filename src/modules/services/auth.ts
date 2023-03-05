@@ -4,7 +4,6 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-import storage from 'redux-persist/lib/storage';
 import { auth, googleProvider } from '../../firebase';
 
 export const register = (email: string, password: string) =>
@@ -16,6 +15,5 @@ export const login = (email: string, password: string) =>
 export const authWithGoogle = () => signInWithPopup(auth, googleProvider);
 
 export const logout = () => {
-  storage.removeItem('persist:root');
   signOut(auth);
 };

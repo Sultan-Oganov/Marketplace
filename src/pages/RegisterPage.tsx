@@ -14,6 +14,7 @@ export const RegisterPage = () => {
   const handleSetUser = (data: UserCredential) => {
     dispath(
       setUser({
+        ...data,
         email: data.user.email,
         //@ts-ignore
         token: data.user.accessToken,
@@ -49,7 +50,7 @@ export const RegisterPage = () => {
 
   return (
     <div className="h-screen grid place-items-center">
-      <Form {...{ handleSubmit, isLoading }} btnTitle="Sign up">
+      <Form {...{ handleSubmit, isLoading }} btnTitle="Зарегистрироваться">
         <button
           onClick={handleGoogleRegister}
           disabled={isLoading}
@@ -59,7 +60,7 @@ export const RegisterPage = () => {
           <img src={google} alt="" className="w-full h-full" />
         </button>
         <NavLink to="/login">
-          <p className="text-white absolute right-5 bottom-5">Log in</p>
+          <p className="text-white absolute right-5 bottom-5">Вход</p>
         </NavLink>
       </Form>
     </div>
